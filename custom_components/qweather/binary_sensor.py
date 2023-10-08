@@ -8,6 +8,7 @@ from homeassistant.components.binary_sensor import (
     BinarySensorEntityDescription,
 )
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import EntityCategory
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -69,6 +70,7 @@ class QWeatherWarningBinarySensor(QBinarySensor):
             client.warning_now_coordinator,
             BinarySensorEntityDescription(
                 key="weather_warning",
+                entity_category=EntityCategory.DIAGNOSTIC,
                 device_class=BinarySensorDeviceClass.SAFETY,
                 translation_key="weather_warning",
             ),

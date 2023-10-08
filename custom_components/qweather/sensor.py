@@ -6,6 +6,7 @@ from typing import Generic, TypeVar
 
 from homeassistant.components.sensor import SensorEntity, SensorEntityDescription
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import EntityCategory
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -26,6 +27,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry, asyn
                 client.minutely_precipitation_coordinator,
                 SensorEntityDescription(
                     key="minutely_precipitation_summary",
+                    entity_category=EntityCategory.DIAGNOSTIC,
                     icon="mdi:weather-pouring",
                     translation_key="minutely_precipitation_summary",
                 ),
