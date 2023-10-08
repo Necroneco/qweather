@@ -7,6 +7,7 @@ from typing import Generic, TypeVar
 from homeassistant.components.sensor import SensorEntity, SensorEntityDescription
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import StateType
 from homeassistant.helpers.update_coordinator import CoordinatorEntity, DataUpdateCoordinator
@@ -53,6 +54,9 @@ class QSensor(CoordinatorEntity, SensorEntity, Generic[_DataT]):
         self.entity_description = description
         self.value_func = value_func
         self._attr_unique_id = f"{config_entry_unique_id}_{description.key}"
+        self._attr_device_info = DeviceInfo(
+            identifiers={(DOMAIN, config_entry_unique_id)},
+        )
 
         self._async_update_attrs(self.coordinator.data)
 

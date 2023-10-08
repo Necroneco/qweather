@@ -10,10 +10,7 @@ from homeassistant import config_entries
 from homeassistant.const import CONF_API_KEY, CONF_LATITUDE, CONF_LONGITUDE, CONF_NAME
 from homeassistant.core import callback
 
-from .const import (
-    CONF_GIRD,
-    DOMAIN
-)
+from .const import CONF_GIRD, DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
