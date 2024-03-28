@@ -1,4 +1,3 @@
-"""Adds config flow for Qweather."""
 import json
 import logging
 from typing import Any

@@ -67,7 +67,7 @@ from .const import (
     SUGGESTIONTPYE2NAME,
     WeatherWarning,
 )
-from .q_client import QWeatherClient
+from .core.q_client import QWeatherClient
 from .utils import float_or_none, int_or_none
 
 _LOGGER = logging.getLogger(__name__)

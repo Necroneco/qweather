@@ -15,7 +15,7 @@ from .const import (
     ROOT_PATH,
     VERSION,
 )
-from .q_client import QWeatherClient
+from .core.q_client import QWeatherClient
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -28,11 +28,6 @@ PLATFORMS = [
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.data.setdefault(DOMAIN, {})
-
-    _LOGGER.debug(f"register_static_path: {ROOT_PATH + ':custom_components/qweather/local'}")
-    hass.http.register_static_path(ROOT_PATH, hass.config.path("custom_components/qweather/local"), False)
-    hass.components.frontend.add_extra_js_url(hass, ROOT_PATH + "/qweather-card/qweather-card.js?ver=" + VERSION)
-    hass.components.frontend.add_extra_js_url(hass, ROOT_PATH + "/qweather-card/qweather-more-info.js?ver=" + VERSION)
 
     entry.async_on_unload(entry.add_update_listener(entry_update_listener))
 

@@ -8,7 +8,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, TimestampDataUpdateCoordinator
 
-from .const import (
+from ..const import (
     AirNow,
     DailyForecast,
     HourlyForecast,
@@ -176,7 +176,9 @@ class QWeatherClient:
                 self._wait_until = math.inf
                 return
             case "401":
-                _LOGGER.error("认证失败，可能使用了错误的KEY、数字签名错误、KEY的类型错误（如使用SDK的KEY去访问Web API）。")
+                _LOGGER.error(
+                    "认证失败，可能使用了错误的KEY、数字签名错误、KEY的类型错误（如使用SDK的KEY去访问Web API）。"
+                )
                 self._wait_until = math.inf
                 return
             case "402":
@@ -185,7 +187,9 @@ class QWeatherClient:
                 self._wait_until = tomorrow_zero.timestamp()
                 return
             case "403":
-                _LOGGER.error("无访问权限，可能是绑定的PackageName、BundleID、域名IP地址不一致，或者是需要额外付费的数据。")
+                _LOGGER.error(
+                    "无访问权限，可能是绑定的PackageName、BundleID、域名IP地址不一致，或者是需要额外付费的数据。"
+                )
                 self._wait_until = math.inf
                 return
             case "404":
