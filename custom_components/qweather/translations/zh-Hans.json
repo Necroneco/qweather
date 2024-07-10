@@ -1,0 +1,43 @@
+{
+    "title": "和风天气",
+    "config": {
+        "step": {
+            "user": {
+                "title": "和风天气",
+                "description": "API Key: https://console.qweather.com/#/apps",
+                "data": {
+                    "name" : "名称",
+                    "api_key": "API Key",
+                    "longitude" : "经度（保留两位小数）",
+                    "latitude" : "维度（保留两位小数）",
+                    "grid_weather": "是否使用格点天气，不选中则使用城市天气"
+                }
+            }
+        },
+        "error": {
+            "communication": "Key可能无效，请检查输入值."
+        }
+    },
+    "options": {
+        "step": {
+            "init":{
+                "data": {
+                    "grid_weather": "格点天气：以经纬度为基准的全球高精度、公里级、格点化天气预报产品，包括任意经纬度的实时天气和天气预报。"
+                },
+                "description": "是否使用格点天气，不选中则使用城市天气。"
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "weather_warning": {
+                "name": "天气灾害预警"
+            }
+        },
+        "sensor": {
+            "minutely_precipitation_summary": {
+                "name": "分钟级降水预报"
+            }
+        }
+    }
+}

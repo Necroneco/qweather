@@ -1,0 +1,43 @@
+{
+    "title": "QWeather",
+    "config": {
+        "step": {
+            "user": {
+                "title": "QWeather",
+                "description": "API Key: https://console.qweather.com/#/apps",
+                "data": {
+                    "name" : "Name",
+                    "api_key": "API Key",
+                    "longitude" : "Longitude",
+                    "latitude" : "Latitude",
+                    "grid_weather": "Use grid weather, otherwise use city weather."
+                }
+            }
+        },
+        "error": {
+            "communication": "Key may be invalid, please check the input value."
+        }
+    },
+    "options": {
+        "step": {
+            "user":{
+                "data": {
+                    "grid_weather": "Browse all grid level Weather APIs around the world, including real-time weather, forecast weather and minute-level precipitation at any latitude and longitude."
+                },
+                "description": "Use grid weather, otherwise use city weather."
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "weather_warning": {
+                "name": "Weather warning"
+            }
+        },
+        "sensor": {
+            "minutely_precipitation_summary": {
+                "name": "Minutely precipitation summary"
+            }
+        }
+    }
+}
